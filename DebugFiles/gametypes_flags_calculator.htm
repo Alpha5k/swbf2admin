@@ -4,8 +4,8 @@
 <title>gametype_flags calculator</title>
 <script type="text/javascript">
 var MapFlags = {
-    GCWCon: (1 << 0), GCWCTF: (1 << 1), GCW1Flag: (1 << 2), GCWHunt: (1 << 3), GCWEli: (1 << 4), GCWAss: (1 << 5),
-    CWCon: (1 << 10), CWCTF: (1 << 11), CW1Flag: (1 << 12), CWHunt: (1 << 13), CWEli: (1 << 14), CWAss: (1 << 15)
+    GCWCon: (1 << 0), GCWCTF: (1 << 1), GCW1Flag: (1 << 2), GCWHunt: (1 << 3), GCWEli: (1 << 4), GCWAss: (1 << 5), GCWHCTF: (1 << 7),
+    CWCon: (1 << 10), CWCTF: (1 << 11), CW1Flag: (1 << 12), CWHunt: (1 << 13), CWEli: (1 << 14), CWAss: (1 << 15), CWHCTF: (1 << 17)
 };
     
 function calcFlags() {
@@ -35,6 +35,7 @@ function calcFlags() {
                             <tr><td><input data-flag="GCWHunt" data-map="g_hunt" type="checkbox" id="maps_gcw_hunt"></td><td><label for="maps_gcw_hunt">GCW Hunt</label></td></tr>
                             <tr><td><input data-flag="GCWEli" data-map="g_eli" type="checkbox" id="maps_gcw_eli"></td><td><label for="maps_gcw_eli">GCW Elimination</label></td></tr>
                             <tr><td><input data-flag="GCWAss" data-map="g_ass" type="checkbox" id="maps_gcw_ass"></td><td><label for="maps_gcw_ass">GCW Assault</label></td></tr>
+                            <tr><td><input data-flag="GCWHCTF" data-map="g_gay" type="checkbox" id="maps_gcw_gay"></td><td><label for="maps_gcw_gay">GCW Hero CTF</label></td></tr>
                         </table>
                     </td>
                     <td>
@@ -45,6 +46,7 @@ function calcFlags() {
                             <tr><td><input data-flag="CWHunt" data-map="c_hunt" type="checkbox" id="maps_cw_hunt"></td><td><label for="maps_cw_hunt">CW Hunt</label></td></tr>
                             <tr><td><input data-flag="CWEli" data-map="c_eli" type="checkbox" id="maps_cw_eli"></td><td><label for="maps_cw_eli">CW Elimination</label></td></tr>
                             <tr><td><input data-flag="CWAss" data-map="c_ass" type="checkbox" id="maps_cw_ass"></td><td><label for="maps_cw_ass">CW Assault</label></td></tr>
+                            <tr><td><input data-flag="CWHCTF" data-map="c_gay" type="checkbox" id="maps_cw_gay"></td><td><label for="maps_cw_gay">CW Hero CTF</label></td></tr>
                         </table>
                     </td>
                 </tr>

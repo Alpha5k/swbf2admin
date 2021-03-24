@@ -518,6 +518,10 @@ a#game_a_eli.active, span.eli {
     background: #ff5e42;
 }
 
+a#game_a_gay.active, span.gay {
+    background: #ff5e42;
+}
+
 a#game_a_hunt.active, span.hunt {
     background: #df6dff;
 }

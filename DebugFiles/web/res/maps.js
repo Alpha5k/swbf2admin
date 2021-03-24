@@ -3,8 +3,8 @@ var MapsUrl = "/settings/maps";
 var MapsEditTimeout = 2500;
 
 var MapFlags = {
-    GCWCon: (1 << 0), GCWCTF: (1 << 1), GCW1Flag: (1 << 2), GCWHunt: (1 << 3), GCWEli: (1 << 4), GCWAss: (1 << 5),
-    CWCon: (1 << 10), CWCTF: (1 << 11), CW1Flag: (1 << 12), CWHunt: (1 << 13), CWEli: (1 << 14), CWAss: (1 << 15)
+    GCWCon: (1 << 0), GCWCTF: (1 << 1), GCW1Flag: (1 << 2), GCWHunt: (1 << 3), GCWEli: (1 << 4), GCWAss: (1 << 5), GCWGay: (1 << 7),
+    CWCon: (1 << 10), CWCTF: (1 << 11), CW1Flag: (1 << 12), CWHunt: (1 << 13), CWEli: (1 << 14), CWAss: (1 << 15), CWGay: (1 << 17)
 };
 
 function Maps() {
@@ -155,8 +155,9 @@ function Maps() {
         modes += base.makeIndicator("1flag", map.Flags & MapFlags.GCW1Flag || map.Flags & MapFlags.CW1Flag);
         modes += base.makeIndicator("ctf", map.Flags & MapFlags.GCWCTF || map.Flags & MapFlags.CWCTF);
         modes += base.makeIndicator("hunt", map.Flags & MapFlags.GCWHunt || map.Flags & MapFlags.CWHunt);
-        modes += base.makeIndicator("ass", map.Flags & MapFlags.GCWAss || map.Flags & MapFlags.CWAss);        
-        modes += base.makeIndicator("eli", map.Flags & MapFlags.GCWEli || map.Flags & MapFlags.CWEli);              
+        modes += base.makeIndicator("ass", map.Flags & MapFlags.GCWAss || map.Flags & MapFlags.CWAss);
+        modes += base.makeIndicator("eli", map.Flags & MapFlags.GCWEli || map.Flags & MapFlags.CWEli);
+        modes += base.makeIndicator("gay", map.Flags & MapFlags.GCWGay || map.Flags & MapFlags.CWHCTF);
         return modes;
     };
     

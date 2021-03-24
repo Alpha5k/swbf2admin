@@ -32,6 +32,7 @@ namespace SWBF2Admin.Structures
             GCWEli = (1 << 4),
             GCWAss = (1 << 5),
             GCWXL = (1 << 6),
+            GCWHCTF = (1 << 7),
 
             CWCon = (1 << 10),
             CWCTF = (1 << 11),
@@ -39,7 +40,8 @@ namespace SWBF2Admin.Structures
             CWHunt = (1 << 13),
             CWEli = (1 << 14),
             CWAss = (1 << 15),
-            CWXL = (1 << 16)
+            CWXL = (1 << 16),
+            CWHCTF = (1 << 17)
         }
         public ServerMap(long databaseId, string name, string niceName, long flags)
         {
@@ -71,6 +73,8 @@ namespace SWBF2Admin.Structures
         public virtual bool HasGCWAss { get { return (Flags & (int)MapFlags.GCWAss) > 0; } set { if (value) Flags |= (int)MapFlags.GCWAss; else Flags &= ~(int)MapFlags.GCWAss; } }
         [JsonIgnore]
         public virtual bool HasGCWXL { get { return (Flags & (int)MapFlags.GCWXL) > 0; } set { if (value) Flags |= (int)MapFlags.GCWXL; else Flags &= ~(int)MapFlags.GCWXL; } }
+        [JsonIgnore]
+        public virtual bool HasGCWHCTF { get { return (Flags & (int)MapFlags.GCWHCTF) > 0; } set { if (value) Flags |= (int)MapFlags.GCWHCTF; else Flags &= ~(int)MapFlags.GCWHCTF; } }
 
         [JsonIgnore]
         public virtual bool HasCWCon { get { return (Flags & (int)MapFlags.CWCon) > 0; } set { if (value) Flags |= (int)MapFlags.CWCon; else Flags &= ~(int)MapFlags.CWCon; } }
@@ -86,6 +90,8 @@ namespace SWBF2Admin.Structures
         public virtual bool HasCWAss { get { return (Flags & (int)MapFlags.CWAss) > 0; } set { if (value) Flags |= (int)MapFlags.CWAss; else Flags &= ~(int)MapFlags.CWAss; } }
         [JsonIgnore]
         public virtual bool HasCWXL { get { return (Flags & (int)MapFlags.CWXL) > 0; } set { if (value) Flags |= (int)MapFlags.CWXL; else Flags &= ~(int)MapFlags.CWXL; } }
+        [JsonIgnore]
+        public virtual bool HasCWHCTF { get { return (Flags & (int)MapFlags.CWHCTF) > 0; } set { if (value) Flags |= (int)MapFlags.CWHCTF; else Flags &= ~(int)MapFlags.CWHCTF; } }
 
         public static List<string> ReadMapRotation(AdminCore core)
         {
@@ -201,6 +207,10 @@ namespace SWBF2Admin.Structures
                         if (gcw) m.HasGCWXL = true;
                         else m.HasCWXL = true;
                         break;
+                    case "gay":
+                        if (gcw) m.HasGCWHCTF = true;
+                        else m.HasCWHCTF = true;
+                        break;
                 }
                 cnt++;
             }
@@ -217,6 +227,7 @@ namespace SWBF2Admin.Structures
             if (HasCWEli) modes.Add("c_eli");
             if (HasCWHunt) modes.Add("c_hunt");
             if (HasCWXL) modes.Add("c_xl");
+            if (HasCWHCTF) modes.Add("c_gay");
             return modes;
         }
 
@@ -230,6 +241,7 @@ namespace SWBF2Admin.Structures
             if (HasGCWEli) modes.Add("g_eli");
             if (HasGCWHunt) modes.Add("g_hunt");
             if (HasGCWXL) modes.Add("g_xl");
+            if (HasGCWHCTF) modes.Add("g_gay");
 
             return modes;
         }
@@ -258,6 +270,9 @@ namespace SWBF2Admin.Structures
 
                 case "g_xl": return HasGCWXL;
                 case "c_xl": return HasCWXL;
+
+                case "g_gay": return HasGCWHCTF;
+                case "c_gay": return HasCWHCTF;
                 default: return false;
             }
         }
